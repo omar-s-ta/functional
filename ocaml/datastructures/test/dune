@@ -1,5 +1,0 @@
-(library
- (name tlist_test)
- (libraries datastructures qcheck alcotest)
- (inline_tests)
- (preprocess (pps ppx_expect)))
