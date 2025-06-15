@@ -25,8 +25,11 @@ let test_failure f =
   with
     | _ -> true
 
+let make_test name gen =
+  QCheck.Test.make ~name:name (QCheck.make gen)
+
 let test_tail =
-  QCheck.Test.make ~name:"tail" (QCheck.make gen_int_tlist)
+  make_test "tail" gen_int_tlist
     (function
     | Tlist.Nil ->
         test_failure (fun () -> Tlist.tail Tlist.Nil)
