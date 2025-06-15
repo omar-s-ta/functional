@@ -16,3 +16,7 @@ let apply = init
 let tail = function
   | Nil -> failwith "empty list"
   | Cons (_, t) -> t
+
+let set_head hd tlst = match tlst with
+  | Nil -> failwith "empty list"
+  | Cons (_, t) -> Cons (hd, t)

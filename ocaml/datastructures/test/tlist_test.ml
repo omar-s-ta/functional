@@ -37,6 +37,15 @@ let test_tail =
         let tail = Tlist.tail (Tlist.Cons (h, t)) in
         tail = t)
 
-let tests = [test_tail]
+let test_set_head =
+  make_test "set_head" gen_int_tlist
+    (function
+    | Tlist.Nil ->
+        test_failure (fun () -> Tlist.set_head 0 Tlist.Nil)
+    | Tlist.Cons (h, t) ->
+        let tlst = Tlist.set_head 0 (Tlist.Cons (h, t)) in
+        tlst = Tlist.Cons (0, t))
+
+let tests = [test_tail; test_set_head]
 
 let () = QCheck_runner.run_tests_main tests
