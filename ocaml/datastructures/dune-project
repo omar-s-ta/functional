@@ -6,10 +6,10 @@
 
 (package
  (name datastructures)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "Functional data structures in OCaml")
+ (description "Implementation of functional data structures List and Tree")
  (depends ocaml dune)
  (tags
-  (topics "to describe" your project)))
+  (functional datastructures ocaml)))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html
