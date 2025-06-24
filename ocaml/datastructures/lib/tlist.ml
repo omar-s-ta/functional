@@ -33,3 +33,8 @@ let rec drop n tlst =
   else match tlst with
     | Nil -> Nil
     | Cons (_, t) -> drop (n - 1) t
+
+(** [drop_while p tlst] is a [tlst] without the first elements that satisfy the predicate *)
+let rec drop_while p tlst = match tlst with
+  | Cons (h, t) when p h -> drop_while p t
+  | _ -> tlst

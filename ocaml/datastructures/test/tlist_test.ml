@@ -53,6 +53,19 @@ let test_drop =
     let b = lst |> as_tlist |> Tlist.drop n |> as_list in
     a = b)
 
-let tests = [test_tail; test_set_head; test_drop]
+let test_drop_while =
+  make_test "drop_while" Gen.(pair gen_int_list Gen.small_nat)
+  (function (lst, n) ->
+    let p x = x <= n in
+    let a = List.drop_while p lst in
+    let b = lst |> as_tlist |> Tlist.drop_while p |> as_list in
+    a = b)
+
+let tests = [
+  test_tail;
+  test_set_head;
+  test_drop;
+  test_drop_while
+]
 
 let () = QCheck_runner.run_tests_main tests
