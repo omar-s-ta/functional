@@ -46,6 +46,13 @@ let test_set_head =
         let tlst = Tlist.set_head 0 (Tlist.Cons (h, t)) in
         tlst = Tlist.Cons (0, t))
 
-let tests = [test_tail; test_set_head]
+let test_drop =
+  make_test "drop" Gen.(pair gen_int_list Gen.small_nat)
+  (function (lst, n) ->
+    let a = List.drop n lst in
+    let b = lst |> as_tlist |> Tlist.drop n |> as_list in
+    a = b)
+
+let tests = [test_tail; test_set_head; test_drop]
 
 let () = QCheck_runner.run_tests_main tests

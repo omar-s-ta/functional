@@ -26,3 +26,10 @@ let tail = function
 let set_head hd = function
   | Nil -> failwith "empty list"
   | Cons (_, t) -> Cons (hd, t)
+
+(** [drop n tlst] is a [tlst] without the first n elements. *)
+let rec drop n tlst =
+  if n <= 0 then tlst
+  else match tlst with
+    | Nil -> Nil
+    | Cons (_, t) -> drop (n - 1) t
