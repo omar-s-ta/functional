@@ -23,6 +23,6 @@ let tail = function
 
 (** [set_head hd tlst] is a [tlst] with the first element set to [hd].
     Setting the head of an empyt [tlst] crashes. *)
-let set_head hd tlst = match tlst with
+let set_head hd = function
   | Nil -> failwith "empty list"
   | Cons (_, t) -> Cons (hd, t)
