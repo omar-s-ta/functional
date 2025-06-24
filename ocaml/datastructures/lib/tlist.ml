@@ -38,3 +38,8 @@ let rec drop n tlst =
 let rec drop_while p tlst = match tlst with
   | Cons (h, t) when p h -> drop_while p t
   | _ -> tlst
+
+(** [fold_left f init [b1; b2; ...; bn]] is [f (... (f (f init b1) b2) ...) bn] *)
+let rec fold_left f init = function
+  | Nil -> init
+  | Cons (h, t) -> fold_left f (f init h) t

@@ -61,11 +61,20 @@ let test_drop_while =
     let b = lst |> as_tlist |> Tlist.drop_while p |> as_list in
     a = b)
 
+let test_fold_left =
+  make_test "fold_left" gen_int_tlist
+  (fun tlst ->
+    let f acc x = acc ^ string_of_int x in
+    let a = Tlist.fold_left f "" tlst in
+    let b = tlst |> as_list |> List.fold_left f "" in
+    a = b)
+
 let tests = [
   test_tail;
   test_set_head;
   test_drop;
-  test_drop_while
+  test_drop_while;
+  test_fold_left
 ]
 
 let () = QCheck_runner.run_tests_main tests
